@@ -61,7 +61,7 @@ for ($i = 0; $i < 5; $i++) {
   $insertedId = $bulk->insert($document);
   $manager->executeBulkWrite(NS, $bulk);
   $cursor = $manager->executeQuery(NS, new MongoDB\Driver\Query($document));
-  $actualId = $cursor->toArray()[0]['_id'];
+  $actualId = $cursor->toArray()[0]->_id;
   echo "String match : ".($insertedId->__toString() == $actualId->__toString());
   echo "Object match : ".$insertedId === $actualId;
 }
