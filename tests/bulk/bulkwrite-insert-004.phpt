@@ -62,9 +62,12 @@ for ($i = 0; $i < 100; $i++) {
   $manager->executeBulkWrite(NS, $bulk);
   $cursor = $manager->executeQuery(NS, new MongoDB\Driver\Query($document));
   $actualId = $cursor->toArray()[0]->_id;
-  var_dump($insertedId->__toString() == $actualId->__toString());
-  var_dump($insertedId == $actualId);
+  $val = ($insertedId->__toString() == $actualId->__toString());
+  if (!$val) {
+    var_dump(false);
+  }
 }
+var_dump(true);
 
 ?>
 ===DONE===
@@ -135,5 +138,5 @@ array(5) {
     }
   }
 }
-%rbool\(true\)\n*%r
+bool(true)
 ===DONE===
