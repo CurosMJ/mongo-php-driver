@@ -55,15 +55,15 @@ var_dump($cursor->toArray());
 
 $manager = new MongoDB\Driver\Manager(URI);
 
-for ($i = 0; $i < 10; $i++) {
+for ($i = 0; $i < 100; $i++) {
   $document = ['i' => $i];
   $bulk = new MongoDB\Driver\BulkWrite();
   $insertedId = $bulk->insert($document);
   $manager->executeBulkWrite(NS, $bulk);
   $cursor = $manager->executeQuery(NS, new MongoDB\Driver\Query($document));
   $actualId = $cursor->toArray()[0]->_id;
-  var_dump("String match : ".($insertedId->__toString() == $actualId->__toString()));
-  var_dump("Object match : ".($insertedId == $actualId));
+  var_dump($insertedId->__toString() == $actualId->__toString());
+  var_dump($insertedId == $actualId);
 }
 
 ?>
@@ -135,26 +135,5 @@ array(5) {
     }
   }
 }
-string(16) "String match : 1"
-string(16) "Object match : 1"
-string(16) "String match : 1"
-string(16) "Object match : 1"
-string(16) "String match : 1"
-string(16) "Object match : 1"
-string(16) "String match : 1"
-string(16) "Object match : 1"
-string(16) "String match : 1"
-string(16) "Object match : 1"
-string(16) "String match : 1"
-string(16) "Object match : 1"
-string(16) "String match : 1"
-string(16) "Object match : 1"
-string(16) "String match : 1"
-string(16) "Object match : 1"
-string(16) "String match : 1"
-string(16) "Object match : 1"
-string(16) "String match : 1"
-string(16) "Object match : 1"
-string(16) "String match : 1"
-string(16) "Object match : 1"
+%r/bool\(true\)\n*/gm%r
 ===DONE===
