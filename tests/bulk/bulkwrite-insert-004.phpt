@@ -55,7 +55,7 @@ var_dump($cursor->toArray());
 
 $manager = new MongoDB\Driver\Manager(URI);
 
-for ($i = 0; $i < 100; $i++) {
+for ($i = 0; $i < 500; $i++) {
   $document = ['i' => $i];
   $bulk = new MongoDB\Driver\BulkWrite();
   $insertedId = $bulk->insert($document);
