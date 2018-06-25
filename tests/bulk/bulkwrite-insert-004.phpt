@@ -55,7 +55,7 @@ var_dump($cursor->toArray());
 
 $manager = new MongoDB\Driver\Manager(URI);
 
-for ($i = 0; $i < 5; $i++) {
+for ($i = 0; $i < 10; $i++) {
   $document = ['i' => $i];
   $bulk = new MongoDB\Driver\BulkWrite();
   $insertedId = $bulk->insert($document);
@@ -135,14 +135,26 @@ array(5) {
     }
   }
 }
-String match : 1
-Object match : 1
-String match : 1
-Object match : 1
-String match : 1
-Object match : 1
-String match : 1
-Object match : 1
-String match : 1
-Object match : 1
+string(16) "String match : 1"
+string(16) "Object match : 1"
+string(16) "String match : 1"
+string(16) "Object match : 1"
+string(16) "String match : 1"
+string(16) "Object match : 1"
+string(16) "String match : 1"
+string(16) "Object match : 1"
+string(16) "String match : 1"
+string(16) "Object match : 1"
+string(16) "String match : 1"
+string(16) "Object match : 1"
+string(16) "String match : 1"
+string(16) "Object match : 1"
+string(16) "String match : 1"
+string(16) "Object match : 1"
+string(16) "String match : 1"
+string(16) "Object match : 1"
+string(16) "String match : 1"
+string(16) "Object match : 1"
+string(16) "String match : 1"
+string(16) "Object match : 1"
 ===DONE===
