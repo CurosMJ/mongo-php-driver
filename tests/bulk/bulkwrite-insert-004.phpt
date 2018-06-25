@@ -62,8 +62,8 @@ for ($i = 0; $i < 5; $i++) {
   $manager->executeBulkWrite(NS, $bulk);
   $cursor = $manager->executeQuery(NS, new MongoDB\Driver\Query($document));
   $actualId = $cursor->toArray()[0]->_id;
-  echo "String match : ".($insertedId->__toString() == $actualId->__toString());
-  echo "Object match : ".$insertedId === $actualId;
+  var_dump("String match : ".($insertedId->__toString() == $actualId->__toString()));
+  var_dump("Object match : ".($insertedId == $actualId));
 }
 
 ?>
@@ -135,14 +135,14 @@ array(5) {
     }
   }
 }
-String match : true
-Object match : true
-String match : true
-Object match : true
-String match : true
-Object match : true
-String match : true
-Object match : true
-String match : true
-Object match : true
+String match : 1
+Object match : 1
+String match : 1
+Object match : 1
+String match : 1
+Object match : 1
+String match : 1
+Object match : 1
+String match : 1
+Object match : 1
 ===DONE===
