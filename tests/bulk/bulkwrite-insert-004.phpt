@@ -55,13 +55,11 @@ var_dump($cursor->toArray());
 
 $manager = new MongoDB\Driver\Manager(URI);
 
-$bulk = new MongoDB\Driver\BulkWrite();
-
 for ($i = 0; $i < 5; $i++) {
-  $document = [
-    'i' => $i
-  ];
+  $document = ['i' => $i];
+  $bulk = new MongoDB\Driver\BulkWrite();
   $insertedId = $bulk->insert($document);
+  $manager->executeBulkWrite(NS, $bulk);
   $cursor = $manager->executeQuery(NS, new MongoDB\Driver\Query($document));
   $actualId = $cursor->toArray()[0]['_id'];
   echo "String match : ".($insertedId->__toString() == $actualId->__toString());
