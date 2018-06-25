@@ -135,5 +135,5 @@ array(5) {
     }
   }
 }
-%r/bool\(true\)\n*/gm%r
+%rbool\(true\)\n*%r
 ===DONE===
