@@ -53,6 +53,20 @@ printf("Inserted %d document(s)\n", $result->getInsertedCount());
 $cursor = $manager->executeQuery(NS, new MongoDB\Driver\Query([]));
 var_dump($cursor->toArray());
 
+$manager = new MongoDB\Driver\Manager(URI);
+
+$bulk = new MongoDB\Driver\BulkWrite();
+
+for ($i = 0; $i < 5; $i++) {
+  $document = [
+    'i' => $i
+  ];
+  $insertedId = $bulk->insert($document);
+  $actualId = $manager->executeQuery(NS, new MongoDB\Driver\Query($document));
+  echo "String match : ".($insertedId->__toString() == $actualId->__toString());
+  echo "Object match : ".$insertedId === $actualId;
+}
+
 ?>
 ===DONE===
 <?php exit(0); ?>
@@ -122,4 +136,14 @@ array(5) {
     }
   }
 }
+String match : true
+Object match : true
+String match : true
+Object match : true
+String match : true
+Object match : true
+String match : true
+Object match : true
+String match : true
+Object match : true
 ===DONE===
